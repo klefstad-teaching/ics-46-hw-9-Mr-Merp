@@ -31,7 +31,7 @@ vector<int> dijkstra_shortest_path(const Graph& G, int source, vector<int>& prev
             }
         }
     }
-    
+    previous[source] = -1;
     return distances;
 }
 
