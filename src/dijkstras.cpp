@@ -43,7 +43,7 @@ vector<int> extract_shortest_path(const vector<int>& distances, const vector<int
         path.push_back(i);
         if (visited[i]) {
             cout << "cycle detected" << endl;
-            break
+            break;
         }
         visited[i] = true;
     }
@@ -57,6 +57,7 @@ void print_path(const vector<int>& path, int total) {
         return;
     }
     int plen = path.size();
+    cout << "Word ladder found: ";
     for (size_t i = 0; i < plen; ++i) {
         cout << path[i] << ' ';
     }
