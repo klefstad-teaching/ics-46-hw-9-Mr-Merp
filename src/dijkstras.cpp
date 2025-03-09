@@ -57,7 +57,6 @@ void print_path(const vector<int>& path, int total) {
         return;
     }
     int plen = path.size();
-    cout << "Word ladder found: ";
     for (size_t i = 0; i < plen; ++i) {
         cout << path[i] << ' ';
     }
