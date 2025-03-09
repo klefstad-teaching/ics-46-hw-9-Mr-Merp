@@ -105,13 +105,12 @@ vector<string> generate_word_ladder(const string& begin_word, const string& end_
             }
         }
     }
-    cout << "bruh" << endl;
     return vector<string>();
 }
 
 void verify_word_ladder() {
     set<string> word_list;
-    load_words(word_list, "src/words.txt");
+    load_words(word_list, "words.txt");
     my_assert(generate_word_ladder("cat", "dog", word_list).size() == 4);
     my_assert(generate_word_ladder("marty", "curls", word_list).size() == 6);
     my_assert(generate_word_ladder("code", "data", word_list).size() == 6);
