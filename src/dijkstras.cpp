@@ -1,3 +1,4 @@
+
 #include "dijkstras.h"
 
 vector<int> dijkstra_shortest_path(const Graph& G, int source, vector<int>& previous) {
@@ -12,6 +13,7 @@ vector<int> dijkstra_shortest_path(const Graph& G, int source, vector<int>& prev
     
     while (!pq.empty()) {
         int u = pq.top().second;
+        int dist_u = pq.top().first;
         pq.pop();
         
         if (visited[u])
@@ -30,32 +32,21 @@ vector<int> dijkstra_shortest_path(const Graph& G, int source, vector<int>& prev
             }
         }
     }
+    previous[source] = -1;
     return distances;
 }
 
 vector<int> extract_shortest_path(const vector<int>& distances, const vector<int>& previous, int destination) {
-    if (distances[destination] == INF)
-        return {};
-
     vector<int> path;
-    vector<bool> visited(previous.size(), false);
-    for (int i = destination; i != -1; i = previous[i]){
+    for (int i = destination; i != -1; i = previous[i])
         path.push_back(i);
-        if (visited[i]) {
-            cout << "cycle detected" << endl;
-            break;
-        }
-        visited[i] = true;
-    }
     
-    return vector<int>(path.rbegin(), path.rend());
+    reverse(path.begin(), path.end());
+    
+    return path;
 }
 
 void print_path(const vector<int>& path, int total) {
-    if (path.empty()) {
-        cout << "No path exists" << endl;
-        return;
-    }
     int plen = path.size();
     for (size_t i = 0; i < plen; ++i) {
         cout << path[i] << ' ';
